@@ -5,6 +5,7 @@ services:
   image: zabbix/zabbix-web-apache-mysql:ubuntu-6.2-latest
   ports:
   - "80:80"
+  hostname: zabbix-server
   volumes:
    #- /etc/localtime:/etc/localtime:ro
    #- /etc/timezone:/etc/timezone:ro

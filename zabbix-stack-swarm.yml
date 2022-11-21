@@ -4,11 +4,11 @@ services:
  zabbix-server:
   image: zabbix/zabbix-server-mysql:ubuntu-6.2-latest
   ports:
-  # - "10051:10051"
-   - target: 10051
-     published: 10051
-     protocol: tcp
-     mode: host
+   - "10051:10051"
+   #- target: 10051
+    # published: 10051
+     #protocol: tcp
+     #mode: host
   volumes:
    #- /etc/localtime:/etc/localtime:ro
    #- /etc/timezone:/etc/timezone:ro 

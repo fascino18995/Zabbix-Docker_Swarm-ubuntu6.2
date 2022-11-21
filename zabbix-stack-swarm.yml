@@ -27,8 +27,6 @@ services:
    - MYSQL_PASSWORD
    - MYSQL_ROOT_PASSWORD
   user: root
-  networks:
-   zabbix_network:
   stop_grace_period: 30s
   deploy:
    update_config:
@@ -48,11 +46,7 @@ services:
   image: zabbix/zabbix-agent:ubuntu-6.2-latest
   hostname: zabbix-agent 
   ports:
-   #- "10050:10050"
-   - target: 10050
-     published: 10050
-     protocol: tcp
-     mode: host
+   - "10050:10050"
   volumes:
   # - /etc/localtime:/etc/localtime:ro
   # - /etc/timezone:/etc/timezone:ro
@@ -70,8 +64,6 @@ services:
   #  constraints:
   #    - 'node.role == worker'
   #pid: "host"
-  networks:
-   zabbix_network:
   stop_grace_period: 5s
 
  mysql-server:
@@ -87,8 +79,6 @@ services:
    - MYSQL_ROOT_PASSWORD
   user: root
   stop_grace_period: 1m
-  networks:
-   zabbix_network:
   deploy:
    update_config:
     failure_action: rollback
@@ -110,20 +100,6 @@ services:
     constraints:
      - 'node.role == manager'
 
-networks:
- zbx_net_swarm:
-  driver: overlay
-  attachable: true
-  #external: true
-
- zabbix_network:
-  attachable: true
-  #external: true
-  internal: true
-  ipam:
-   driver: default
-   config:
-    - subnet: "10.10.210.0/24"
 
 secrets:
   MYSQL_USER:

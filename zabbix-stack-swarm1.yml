@@ -27,13 +27,12 @@ services:
    retries: 3
    start_period: 30s
   networks:
-   zbx_net_swarm:
    zabbix_network:
   stop_grace_period: 10s
   deploy:
    update_config:
     failure_action: rollback
-   replicas: 2
+   #replicas: 2
    #placement:
    # constraints:
    #  - 'node.role == worker'

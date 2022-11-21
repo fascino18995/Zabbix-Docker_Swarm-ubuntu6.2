@@ -47,12 +47,12 @@ services:
  zabbix-server:
   image: zabbix/zabbix-server-mysql:ubuntu-6.2-latest
   ports:
-  hostname: zabbix-server
   # - "10051:10051"
    - target: 10051
      published: 10051
      protocol: tcp
      mode: host
+  hostname: zabbix-server
   volumes:
    #- /etc/localtime:/etc/localtime:ro
    #- /etc/timezone:/etc/timezone:ro 

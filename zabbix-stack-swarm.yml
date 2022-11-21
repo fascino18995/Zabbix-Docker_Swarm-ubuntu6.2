@@ -107,6 +107,21 @@ services:
    placement:
     constraints:
      - 'node.role == manager'
+     
+networks:
+ zbx_net_swarm:
+  driver: overlay
+  attachable: true
+  #external: true
+
+ zabbix_network:
+  attachable: true
+  #external: true
+  internal: true
+  ipam:
+   driver: default
+   config:
+    - subnet: "10.10.210.0/24"
 
 
 secrets:
